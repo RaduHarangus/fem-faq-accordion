@@ -1,6 +1,8 @@
 <form [formGroup]="form" (submit)="onSubmit()">
     <header>
-        <img class="star-icon" src="assets/icon-star.svg" alt="Star icon">
+        <a routerLink="/faq" aria-label="link to faq">
+            <img class="star-icon" src="assets/icon-star.svg" alt="Star icon">
+        </a>
     </header>
     <main>
         <h1>How did we do?</h1>
@@ -18,7 +20,7 @@
                             formControlName="rating"
                             class="d-none"
                     >
-                    <label for="rating-{{ rating.value }}" class="rating-btn">
+                    <label for="rating-{{ rating.value }}" class="rating-btn" tabindex="0">
                         {{ rating.value }}
                     </label>
                 </li>
@@ -27,6 +29,7 @@
     </main>
     <footer>
         <button
+                type="submit"
                 class="submit-button"
                 aria-label="submit rating form"
                 [disabled]="form.invalid"

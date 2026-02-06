@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400..700&display=swap');
 
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/assets/faq/fonts/static/WorkSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/assets/faq/fonts/static/WorkSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/assets/faq/fonts/static/WorkSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --black: #000000;
   --white: hsl(0, 100%, 100%);
@@ -8,6 +29,11 @@
   --grey-900: hsl(213, 19%, 18%);
   --grey-925: hsl(216, 12%, 9%);
   --grey-950: hsl(216, 12%, 8%);
+  --purple-100: hsl(275, 100%, 97%);
+  --purple-600: hsl(292, 16%, 49%);
+  --accent-color: hsl(281, 82%, 54%);
+  --purple-950: hsl(292, 42%, 14%);
+  --grey: #F0F0F0;
 }
 
 .d-none {
@@ -23,6 +49,18 @@ body {
   line-height: 1.5;
   place-content: center;
   place-items: center;
+}
+
+body {
+  background-color: var(--purple-100);
+  background-image: url('/assets/faq/images/background-pattern-desktop.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+
+  @media (max-width: 768px) {
+    background-image: url('/assets/faq/images/background-pattern-mobile.svg');
+  }
 }
 
 h1 {
@@ -130,4 +168,88 @@ app-thank-you-card {
   margin: auto;
   max-width: 330px;
   padding: 2rem;
+}
+
+app-faq {
+  font-size: 16px;
+  font-family: 'Work Sans', sans-serif;
+
+  background-color: var(--white);
+  border-radius: 1rem;
+  display: block;
+  margin: auto;
+  width: 480px;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+
+  header {
+    display: flex;
+    gap: 1.75rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--purple-950);
+    margin-block: 0;
+  }
+
+  p {
+    color: var(--purple-600);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    padding-block: 1.5rem;
+
+    & + li {
+      border-top: 1px solid var(--grey);
+    }
+  }
+
+  summary {
+    color: var(--purple-950);
+    font-weight: 600;
+    line-height: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--accent-color);
+    }
+
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      background-image: url('/assets/faq/images/icon-plus.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+  }
+
+  details[open] summary::after {
+    background-image: url('/assets/faq/images/icon-minus.svg');
+  }
 }
